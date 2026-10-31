@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://yoyo700702ai.github.io/chatgpt-course-signup-1129/">
+<title>AI 程式 × ChatGPT 實戰｜老師的 AI 自動化工作術 — 報名頁</title>
+<meta name="description" content="給老師的 3 小時線上實戰課：用 ChatGPT 幫你做出班級專屬答題遊戲、自動排程整理成績、AI 畫教材插圖。2026/11/29（日）19:00 開課。">
+<style>
+  :root{
+    --bg:#122b20; --bg2:#0d221a; --card:#f7f1de; --card2:#efe6cc;
+    --ink:#26372c; --cream:#f5eeda; --gold:#d4a04a; --gold2:#f0c168;
+    --green:#3f6e52; --red:#c2563c; --muted:#8ba08f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{max-width:100%;overflow-x:hidden}
+  h1,h2,h3,p,li,td,summary,label{overflow-wrap:anywhere}
+  body{
+    background:radial-gradient(1200px 700px at 70% -10%, #1c3d2d 0%, var(--bg) 55%, var(--bg2) 100%);
+    color:var(--cream);
+    font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+    line-height:1.75; font-size:17px;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+  section{padding:56px 0}
+
+  /* Hero */
+  .hero{padding:36px 0 48px;text-align:center}
+  .hero img{width:100%;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.45);display:block}
+  .hero .date-badge{
+    display:inline-block;margin-top:26px;padding:.5em 1.6em;border-radius:999px;
+    border:2px solid var(--gold);color:var(--gold2);font-weight:900;letter-spacing:.12em;
+    font-size:clamp(16px,2.4vw,21px);max-width:100%;
+  }
+  @media(max-width:480px){
+    .hero .date-badge{letter-spacing:.03em;padding:.5em 1em;font-size:15px}
+    body{font-size:16px}
+  }
+  .hero h1{font-size:clamp(26px,4.6vw,40px);margin-top:.6em;letter-spacing:.04em}
+  .hero p.sub{color:#d8e0cd;margin-top:.5em;font-size:clamp(15px,2vw,19px)}
+
+  .cta{
+    display:inline-block;margin-top:1.4em;padding:.85em 2.6em;border-radius:14px;
+    background:linear-gradient(135deg,var(--gold),#b8852f);color:#241a08;text-decoration:none;
+    font-weight:900;font-size:clamp(17px,2.4vw,21px);letter-spacing:.1em;
+    box-shadow:0 10px 26px rgba(212,160,74,.35);transition:transform .15s ease;
+  }
+  .cta:hover{transform:translateY(-2px)}
+  .cta.secondary{background:transparent;border:2px solid var(--gold);color:var(--gold2);box-shadow:none}
+
+  /* Section titles */
+  .kicker{color:var(--gold2);font-weight:900;letter-spacing:.28em;font-size:14px;text-align:center}
+  h2.sec{font-size:clamp(23px,3.6vw,32px);text-align:center;margin:.35em 0 1.1em;letter-spacing:.05em}
+  .lead{max-width:640px;margin:0 auto 1.6em;text-align:center;color:#e8ecd9}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:720px){.cards,.cards.two{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);color:var(--ink);border-radius:14px;padding:20px 22px;
+    box-shadow:0 8px 22px rgba(0,0,0,.28);
+  }
+  .card h3{font-size:18px;margin-bottom:.35em;display:flex;align-items:center;gap:.4em}
+  .card p{font-size:15.5px;color:#4d5c50}
+  .card.warm{background:linear-gradient(135deg,#fdf3d8,#f4e3b8)}
+
+  .banner{width:100%;border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.4);display:block;margin:26px auto 0}
+
+  /* Anonymous learner feedback */
+  .testimonial-note{max-width:700px;margin:-.5em auto 1.5em;text-align:center;color:#bdc9be;font-size:14.5px}
+  .testimonials{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+  .testimonial-card{
+    margin:0;background:var(--card);border-radius:14px;overflow:hidden;
+    box-shadow:0 10px 28px rgba(0,0,0,.34);border:1px solid rgba(240,193,104,.28)
+  }
+  .testimonial-image-link{display:block;cursor:zoom-in}
+  .testimonial-card img{width:100%;height:auto;display:block;background:#fff}
+  .testimonial-card figcaption{
+    color:var(--ink);font-size:15px;font-weight:900;padding:12px 16px 14px;
+    border-top:1px solid #ddd1ae;background:linear-gradient(135deg,#fffaf0,#efe6cc)
+  }
+  .value-bridge{
+    margin:24px auto 0;max-width:740px;padding:20px 24px;border-radius:14px;text-align:center;
+    background:linear-gradient(135deg,#fdf3d8,#f2ddab);color:#553c12;
+    font-size:clamp(16px,2.2vw,19px);font-weight:800;box-shadow:0 10px 26px rgba(0,0,0,.28)
+  }
+  @media(max-width:720px){
+    .testimonials{grid-template-columns:1fr;gap:15px}
+    .testimonial-card figcaption{font-size:14.5px}
+  }
+
+  /* Highlight strip */
+  .strip{
+    background:linear-gradient(135deg,#fdf3d8,#f2ddab);color:#553c12;border-radius:14px;
+    padding:22px 26px;text-align:center;font-weight:800;font-size:clamp(16px,2.4vw,20px);
+    box-shadow:0 10px 26px rgba(0,0,0,.3);
+  }
+
+  /* Learn list */
+  .learn{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.learn{grid-template-columns:1fr}}
+  .learn .card{display:flex;gap:14px;align-items:flex-start}
+  .learn .n{
+    flex-shrink:0;width:2em;height:2em;border-radius:50%;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:900;
+  }
+
+  /* fit table */
+  .fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:720px){.fit{grid-template-columns:1fr}}
+  .fit ul{list-style:none}
+  .fit li{padding:.3em 0;font-size:15.5px}
+  .fit .yes li::before{content:"✅ ";}
+  .fit .no li::before{content:"❌ ";}
+
+  /* Info */
+  .info{background:var(--card);color:var(--ink);border-radius:16px;padding:28px 30px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .info table{width:100%;border-collapse:collapse}
+  .info td{padding:.55em .4em;border-bottom:1px dashed #cbbf9d;font-size:16px;vertical-align:top}
+  .info td:first-child{width:7.5em;font-weight:900;color:var(--green);white-space:nowrap}
+  .info .price{color:var(--red);font-weight:900}
+  .returning-note{
+    margin-top:18px;background:linear-gradient(135deg,#fdf3d8,#f2ddab);color:var(--ink);
+    border-radius:16px;padding:22px 26px;box-shadow:0 12px 30px rgba(0,0,0,.28);
+  }
+  .returning-note h3{font-size:clamp(19px,2.8vw,24px);line-height:1.45;margin-bottom:.7em;color:#553c12}
+  .returning-note ol{padding-left:1.25em}
+  .returning-note li{margin:.7em 0}
+  .returning-note strong{color:var(--red)}
+  .returning-note p{font-size:15.5px;color:#4d5c50;margin:.25em 0 0}
+
+  /* FAQ */
+  details{background:var(--card);color:var(--ink);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+  summary{font-weight:900;cursor:pointer;font-size:16.5px}
+  details p{margin-top:.6em;font-size:15.5px;color:#4d5c50}
+
+  /* Form */
+  .form-box{background:var(--card);color:var(--ink);border-radius:18px;padding:32px 30px;box-shadow:0 16px 40px rgba(0,0,0,.4)}
+  .form-box label{display:block;font-weight:900;margin:18px 0 6px;font-size:15.5px}
+  .form-box label .req{color:var(--red)}
+  .form-box input,.form-box select,.form-box textarea{
+    width:100%;padding:.7em .9em;border-radius:10px;border:1.5px solid #c9bd9c;background:#fffdf6;
+    font-size:16px;font-family:inherit;color:var(--ink);
+  }
+  .form-box input:focus,.form-box select:focus,.form-box textarea:focus{outline:2px solid var(--gold)}
+  .form-box button{
+    width:100%;margin-top:26px;padding:.95em;border:none;border-radius:12px;cursor:pointer;
+    background:linear-gradient(135deg,var(--gold),#b8852f);color:#241a08;font-weight:900;
+    font-size:19px;letter-spacing:.15em;font-family:inherit;box-shadow:0 10px 26px rgba(212,160,74,.35);
+  }
+  .form-box button:disabled{opacity:.55;cursor:not-allowed}
+  .form-note{font-size:13.5px;color:#7a8a7d;margin-top:14px;text-align:center}
+  #formMsg{margin-top:16px;text-align:center;font-weight:900;display:none;padding:.8em;border-radius:10px}
+  #formMsg.ok{display:block;background:#e2efdd;color:#3f6e52}
+  #formMsg.err{display:block;background:#f6ded6;color:var(--red)}
+  .hp{position:absolute;left:-9999px;opacity:0}
+
+  /* 內嵌試玩舞台（同小禮包版型） */
+  .demo-stage-wrap{margin-top:26px}
+  .demo-stage-title{text-align:center;font-size:clamp(18px,2.4vw,23px);font-weight:900;color:var(--gold2);margin-bottom:12px;letter-spacing:.06em}
+  .demo-stage{
+    position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;
+    background:#000;border:2px solid var(--gold);box-shadow:0 10px 40px rgba(212,160,74,.28);
+  }
+  .demo-stage img.cover-img,.demo-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+  .demo-stage img.cover-img{object-fit:cover}
+  .play-overlay{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1em;
+    background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%);cursor:pointer;transition:background .2s;z-index:2;
+  }
+  .play-overlay:hover{background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.45) 100%)}
+  .play-btn-big{
+    width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));
+    display:flex;align-items:center;justify-content:center;color:#1a1a1a;font-size:38px;font-weight:bold;
+    box-shadow:0 6px 30px rgba(212,160,74,.55),0 0 0 8px rgba(212,160,74,.18);transition:transform .15s;padding-left:6px;
+  }
+  .play-overlay:hover .play-btn-big{transform:scale(1.08)}
+  .play-label{
+    color:#fff;font-size:clamp(14px,1.6vw,17px);background:rgba(0,0,0,.55);
+    padding:.4em 1em;border-radius:20px;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(4px);
+  }
+  .play-fullscreen{
+    position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:var(--gold2);
+    border:1px solid var(--gold);border-radius:6px;padding:.3em .7em;font-size:.85em;cursor:pointer;z-index:3;display:none;
+  }
+  .demo-stage.playing .play-fullscreen{display:block}
+  .demo-stage-hint{text-align:center;color:var(--muted);font-size:13.5px;margin-top:8px}
+  .demo-stage-hint a{color:var(--gold2)}
+
+  footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:14px}
+  footer a{color:var(--gold2)}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero wrap">
+  <img src="assets/hero.png" alt="AI 程式 × ChatGPT 實戰 — 老師的 AI 自動化工作術">
+  <div class="date-badge">🗓 2026/11/29（日）19:00–22:00 ｜ 💻 線上</div>
+  <h1>你講一句話，AI 把事情<u>做完</u>給你看</h1>
+  <p class="sub">給老師的 3 小時實戰課：做出班級專屬答題遊戲、AI 自動畫教材插圖、成績週報自動產出。<br>不用會程式——你會講話，就會指揮 AI。</p>
+  <a class="cta" href="#signup">立即報名 ✍️</a>
+</header>
+
+<!-- ═══ 痛點 ═══ -->
+<section class="wrap">
+  <p class="kicker">TEACHER'S PAIN</p>
+  <h2 class="sec">這三件事，是不是每週都在重演？</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>🌙 出題出到半夜</h3>
+      <p>花兩小時出一份複習卷，排版、對答案、印刷版⋯⋯全部自己來。AI 明明很聰明，最後動手的還是你。</p>
+    </div>
+    <div class="card">
+      <h3>🗑 學生考完就忘</h3>
+      <p>你熬夜出的考卷，學生寫完 10 分鐘就進了回收桶。紙本考卷無趣、不能重玩，錯的題目下次照樣錯。</p>
+    </div>
+    <div class="card">
+      <h3>📚 行政做不完</h3>
+      <p>成績登記、週報、家長溝通簡報、班級公告⋯⋯同樣的表格每週重做一次，吃掉你備課和休息的時間。</p>
+    </div>
+  </div>
+  <img class="banner" src="assets/pain.png" alt="老師的三大痛點：出題到半夜、考完就忘、行政做不完">
+</section>
+
+<!-- ═══ 翻轉 ═══ -->
+<section class="wrap">
+  <p class="kicker">THE SHIFT</p>
+  <h2 class="sec">問題不在 AI 不夠聰明，<br>在它「沒辦法替你做完」</h2>
+  <p class="lead">這堂課從 ChatGPT 的 AI 工作方式出發，透過 <b>ChatGPT 桌面版（其中的 Codex 程式模式）</b> 練習讀取檔案、製作作品與檢查成果。<br>你提供目標、素材與限制，和 AI 一步一步把想法做出來：</p>
+  <div class="strip">
+    你說「幫我把題庫變成打怪遊戲」→<br>
+    它自己讀你的題庫檔、寫好遊戲、畫好美術、打開瀏覽器給你驗收 ✨
+  </div>
+</section>
+
+<!-- ═══ 你會學到 ═══ -->
+<section class="wrap">
+  <p class="kicker">WHAT YOU'LL LEARN</p>
+  <h2 class="sec">3 小時，你會帶走這些</h2>
+  <div class="learn">
+    <div class="card"><div class="n">1</div><div><h3>指揮 AI 的方法</h3><p>用簡短提示說清楚目標、脈絡與完成標準——這套方法之後做任何東西都能套用。</p></div></div>
+    <div class="card"><div class="n">2</div><div><h3>你自己科目的答題遊戲</h3><p>把你帶來的題庫（Word / PDF / 手寫拍照都行）直接變成有金幣、有 BOSS 的闖關遊戲。</p></div></div>
+    <div class="card"><div class="n">3</div><div><h3>AI 畫圖直接進教材</h3><p>用繪圖功能製作插圖、封面與教材圖卡，再檢查並修正中文文字，實際放進作品。</p></div></div>
+    <div class="card"><div class="n">4</div><div><h3>自動排程 Automations</h3><p>每週五自動整理成績產週報、每天自動列缺交名單——設定一次，AI 準時上班。</p></div></div>
+    <div class="card"><div class="n">5</div><div><h3>試算表、簡報與 PDF</h3><p>用 ChatGPT 整理資料、製作文件，逐步檢查內容、公式與版面，完成可帶回教學現場的素材。</p></div></div>
+    <div class="card"><div class="n">6</div><div><h3>作品上線分享</h3><p>遊戲推上網路拿到專屬網址，一條連結發到班群，學生手機點開就能玩。</p></div></div>
+  </div>
+  <img class="banner" src="assets/roadmap.png" alt="課程地圖：指揮 AI → 做出遊戲 → 內建超能力 → 上線分享">
+</section>
+
+<!-- ═══ 成果 ═══ -->
+<section class="wrap">
+  <p class="kicker">AFTER THE COURSE</p>
+  <h2 class="sec">上完課的那個週一</h2>
+  <p class="lead">你把連結丟進班群。學生午休搶著玩你做的遊戲，錯的題目反而記得最牢；<br>而你上週要熬夜做的成績週報——AI 在週五下午就自動寄給你了。</p>
+  <img class="banner" src="assets/outcome.png" alt="題庫變遊戲，學生搶著玩">
+</section>
+
+<!-- ═══ 學員心得 ═══ -->
+<section class="wrap" id="testimonials">
+  <p class="kicker">REAL RESULTS</p>
+  <h2 class="sec">不是只聽懂，是真的做得出來</h2>
+  <p class="lead">前一梯的學員們帶著自己的題庫與教學想法來，課後帶走能玩、能分享，也能繼續修改的作品。</p>
+  <p class="testimonial-note">以下整理自 8/9 Codex 實戰課學員的課後分享；姓名與頭像皆已匿名化，未附原貼文連結。點圖可放大閱讀。</p>
+  <div class="testimonials">
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-01.jpg" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得一"><img src="assets/testimonials/review-01.jpg" width="720" height="400" loading="lazy" decoding="async" alt="匿名學員心得：遇到問題時有真人在線協助"></a>
+      <figcaption>遇到問題，有真人陪著拆解</figcaption>
+    </figure>
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-02.jpg" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得二"><img src="assets/testimonials/review-02.jpg" width="720" height="400" loading="lazy" decoding="async" alt="匿名學員心得：沒有程式基礎也能跟著完成"></a>
+      <figcaption>沒有程式基礎，也能跟著完成</figcaption>
+    </figure>
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-03.jpg" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得三"><img src="assets/testimonials/review-03.jpg" width="720" height="400" loading="lazy" decoding="async" alt="匿名學員心得：一堂課完成可玩的冒險關卡"></a>
+      <figcaption>一堂課，做出可玩的冒險關卡</figcaption>
+    </figure>
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-04.png" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得四"><img src="assets/testimonials/review-04.png" width="1683" height="934" loading="lazy" decoding="async" alt="匿名學員心得：課程手把手教學並分享設計心法"></a>
+      <figcaption>不只教工具，也教設計與判斷</figcaption>
+    </figure>
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-05.jpg" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得五"><img src="assets/testimonials/review-05.jpg" width="720" height="400" loading="lazy" decoding="async" alt="匿名學員心得：完成能帶回教學現場的金融教育遊戲"></a>
+      <figcaption>作品能直接帶回研習與教學現場</figcaption>
+    </figure>
+    <figure class="testimonial-card">
+      <a class="testimonial-image-link" href="assets/testimonials/review-06.jpg" target="_blank" rel="noopener" aria-label="放大閱讀匿名學員心得六"><img src="assets/testimonials/review-06.jpg" width="720" height="400" loading="lazy" decoding="async" alt="匿名學員心得：日後設計課堂活動更方便"></a>
+      <figcaption>讓之後設計課堂活動更方便</figcaption>
+    </figure>
+  </div>
+  <div class="value-bridge">老師的每一筆進修費都要花在刀口上：<br>帶走的不是一晚的靈感，而是一套之後還能反覆使用的做法。</div>
+  <p style="text-align:center"><a class="cta" href="#signup">看看課程資訊，決定要不要來 ✍️</a></p>
+</section>
+
+<!-- ═══ 試玩 ═══ -->
+<section class="wrap">
+  <p class="kicker">TRY IT NOW</p>
+  <h2 class="sec">先玩玩看：用同一套方法做出來的遊戲</h2>
+  <p class="lead">這兩個作品就是用課堂上教的方法做的——把課文變成實境解謎。<br>手機、電腦都能直接玩，玩過你就知道學生為什麼會搶著寫題目。</p>
+  <div class="demo-stage-wrap">
+    <p class="demo-stage-title">🌸 桃花源記 · 實境解謎</p>
+    <div class="demo-stage" data-src="https://yoyo700702ai.github.io/taohuayuan-ji/">
+      <img class="cover-img" src="https://yoyo700702ai.github.io/taohuayuan-ji/assets/cover.png" alt="桃花源記封面">
+      <div class="play-overlay">
+        <div class="play-btn-big">▶</div>
+        <div class="play-label">點擊試玩 · 桃花源記（跟著武陵漁人解開課文謎題）</div>
+      </div>
+      <button class="play-fullscreen" title="全螢幕">⛶ 全螢幕</button>
+    </div>
+    <p class="demo-stage-hint">手機建議按 ⛶ 全螢幕，或<a href="https://yoyo700702ai.github.io/taohuayuan-ji/" target="_blank" rel="noopener">開新視窗玩 →</a></p>
+  </div>
+
+  <div class="demo-stage-wrap">
+    <p class="demo-stage-title">⚔️ 鴻門宴 · 實境解謎</p>
+    <div class="demo-stage" data-src="https://yoyo700702ai.github.io/hongmen-banquet/">
+      <img class="cover-img" src="https://yoyo700702ai.github.io/hongmen-banquet/assets/cover.png" alt="鴻門宴封面">
+      <div class="play-overlay">
+        <div class="play-btn-big">▶</div>
+        <div class="play-label">點擊試玩 · 鴻門宴（在殺機四伏的宴席做出抉擇）</div>
+      </div>
+      <button class="play-fullscreen" title="全螢幕">⛶ 全螢幕</button>
+    </div>
+    <p class="demo-stage-hint">手機建議按 ⛶ 全螢幕，或<a href="https://yoyo700702ai.github.io/hongmen-banquet/" target="_blank" rel="noopener">開新視窗玩 →</a></p>
+  </div>
+</section>
+
+<!-- ═══ 課程配套 ═══ -->
+<section class="wrap">
+  <p class="kicker">SUPPORT</p>
+  <h2 class="sec">報名就有的四個配套</h2>
+  <p class="lead">這堂課<b>沒有錄影回放</b>——因為我們準備了更有用的四件事，陪你把學到的真正用起來。</p>
+  <div class="cards two">
+    <div class="card">
+      <h3>🤝 群組陪跑</h3>
+      <p>課後不解散。專屬群組裡卡關就問、作品互相觀摩，老師和夥伴一起陪你把工具用進日常。</p>
+    </div>
+    <div class="card">
+      <h3>🔁 複訓只要 300 元</h3>
+      <p>之後同課程的場次，舊生只要 300 元就能回來重複聽——聽第二次的收穫常常比第一次還多。</p>
+    </div>
+    <div class="card">
+      <h3>📖 文字講義整理</h3>
+      <p>課程重點整理成文字講義，所有 prompt 一鍵複製。上課專心跟做，回家照講義複習。</p>
+    </div>
+    <div class="card">
+      <h3>🎁 會長大的 AI 小禮包</h3>
+      <p>課後在 FB／IG 公開分享心得，標記 YOYO 或「一百分遊戲教育」，即可領取持續更新的 AI 小禮包。<b>免交作業、免上傳作品。</b></p>
+    </div>
+  </div>
+  <img class="banner" src="assets/perks.png" alt="四個課程配套：群組陪跑、複訓 300 元、文字講義、會長大的小禮包">
+</section>
+
+<!-- ═══ 適合誰 ═══ -->
+<section class="wrap">
+  <p class="kicker">IS THIS FOR ME?</p>
+  <h2 class="sec">這堂課適合你嗎？</h2>
+  <div class="fit">
+    <div class="card">
+      <h3>適合</h3>
+      <ul class="yes">
+        <li>完全沒寫過程式的中小學教師</li>
+        <li>想把考卷、講義「遊戲化」的老師</li>
+        <li>想用 AI 減少行政重複工作的老師</li>
+        <li>用過 ChatGPT，但覺得「還是好麻煩」的人</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>不適合</h3>
+      <ul class="no">
+        <li>想深入學程式語言本身的人（我們教「指揮」，不教語法）</li>
+        <li>不打算訂閱 ChatGPT 付費方案的人（本課程以 Plus 以上方案實作）</li>
+        <li>期待「全自動不用動腦」的人——你還是課堂的主人</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 課程資訊 ═══ -->
+<section class="wrap">
+  <p class="kicker">COURSE INFO</p>
+  <h2 class="sec">課程資訊</h2>
+  <div class="info">
+    <table>
+      <tr><td>課程名稱</td><td>AI 程式 × ChatGPT 實戰｜老師的 AI 自動化工作術</td></tr>
+      <tr><td>日期時間</td><td><b>2026/11/29（日）19:00–22:00</b>（3 小時，線上直播實作）</td></tr>
+      <tr><td>上課方式</td><td>線上（報名後於 LINE 群公布會議連結）；全程跟著老師動手做</td></tr>
+      <tr><td>費用</td><td><span class="price">第一次參加 NT$1,500</span>　｜　曾報名過 AI 程式課程的舊夥伴 <span class="price">NT$300</span>（報名表備註上過哪一堂課）</td></tr>
+      <tr><td>名額</td><td>首次參加 25 位正取，額滿轉候補；舊生／複訓不佔名額</td></tr>
+      <tr><td>課程配套</td><td>群組陪跑｜之後場次複訓 NT$300｜文字講義整理｜FB／IG 公開心得並標記 YOYO 或「一百分遊戲教育」，領取持續更新小禮包；免交作業、免上傳作品（無錄影回放）</td></tr>
+      <tr><td>課前準備</td><td>① ChatGPT 付費帳號（Plus 以上）② <a href="https://chatgpt.com/download/" target="_blank" rel="noopener">下載並安裝 ChatGPT 桌面版</a>（其中的 Codex 程式模式） ③ GitHub 帳號 ④ 自備一份題庫（至少 20 題，格式不拘）——報名後會收到手把手課前指南</td></tr>
+      <tr><td>主辦</td><td>一百分遊戲教育</td></tr>
+    </table>
+  </div>
+  <div class="returning-note">
+    <h3>舊生看過來：這堂課跟之前的 AI 程式課程有什麼不一樣？</h3>
+    <ol>
+      <li>
+        <strong>工具不一樣</strong>
+        <p>之前使用的是 IDE，操作介面比較複雜，可以串接不同訂閱模型；連接權限也需要比較多外部操作，適合比較專業、有耐心的使用者。</p>
+        <p>這堂課教的是 ChatGPT 桌面版中的 Codex 程式模式，課堂操作以 GPT 系列為主，但操作更簡單、更直覺，連接與控制網頁也更方便，適合一般 AI 入門使用者。</p>
+      </li>
+      <li>
+        <strong>課程內容與 AI 溝通方式沒有差太多</strong>
+        <p>不管工具怎麼換，最基礎的重點仍然是：怎麼說清楚需求、怎麼拆步驟、怎麼驗收結果。和 AI 相處的底層方式不會有太大改變。</p>
+      </li>
+    </ol>
+  </div>
+  <p style="text-align:center;margin-top:24px"><a class="cta" href="#signup">我要報名 ✍️</a></p>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="wrap">
+  <p class="kicker">FAQ</p>
+  <h2 class="sec">常見問題</h2>
+  <details>
+    <summary>我完全不會程式，真的跟得上嗎？</summary>
+    <p>這堂課就是為「零程式背景」的老師設計的。全程用中文對 AI 講話，程式是 AI 寫的，你負責提需求和驗收。歷來學員多數是第一次「寫出」程式的老師。</p>
+  </details>
+  <details>
+    <summary>一定要付費訂閱 ChatGPT 嗎？</summary>
+    <p>這堂課以 ChatGPT Plus（或以上）方案進行實作。這是課程的準備條件，訂閱一個月就能上課＋課後練習，之後要不要續訂由你決定。</p>
+  </details>
+  <details>
+    <summary>需要什麼設備？</summary>
+    <p>一台 Windows 或 Mac 電腦（近五年機種皆可）＋穩定網路。建議雙螢幕或搭配平板看直播，單螢幕也可以。</p>
+  </details>
+  <details>
+    <summary>上課做的遊戲，之後可以自己改嗎？</summary>
+    <p>可以，而且這正是課程的重點——你帶走的不是「一個遊戲」，是做遊戲的方法。想改題目、換科目、換視覺，向 ChatGPT 說明想改的內容，再一起檢查調整。</p>
+  </details>
+  <details>
+    <summary>有錄影回放嗎？</summary>
+    <p>沒有錄影回放。因為這堂課<b>不是單純聽講，而是實作陪跑</b>——全程跟著老師一步一步動手做，錄影沒辦法保證看的人跟得上每個操作環節。取而代之的是四個配套：課後群組陪跑（卡關隨時問）、之後場次複訓只要 NT$300、文字講義整理（含所有 prompt），以及在 FB／IG 公開分享心得、標記 YOYO 或「一百分遊戲教育」後領取的持續更新 AI 小禮包。免交作業、免上傳作品。</p>
+  </details>
+  <details>
+    <summary>當天臨時不能上課怎麼辦？</summary>
+    <p>請<b>提早跟老師說</b>。開課<b>兩天前</b>（11/27 之前）告知可以退費；之後才告知的話，只能改為補課（參加之後場次），恕不退費。</p>
+  </details>
+</section>
+
+<!-- ═══ 報名表單 ═══ -->
+<section class="wrap" id="signup">
+  <p class="kicker">SIGN UP</p>
+  <h2 class="sec">報名表單</h2>
+  <div class="form-box">
+    <form id="regForm">
+      <label>姓名 <span class="req">＊</span></label>
+      <input type="text" name="name" required placeholder="王小明">
+
+      <label>Email <span class="req">＊</span></label>
+      <input type="email" name="email" required placeholder="you@example.com">
+
+      <label>手機 <span class="req">＊</span></label>
+      <input type="tel" name="phone" required placeholder="0912-345-678">
+
+      <label>LINE 名稱（入群對照用）</label>
+      <input type="text" name="line_name" placeholder="你的 LINE 顯示名稱">
+
+      <label>任教階段與科目</label>
+      <input type="text" name="subject" placeholder="例：國中英文 / 國小自然 / 高中數學">
+
+      <label>報名身分 <span class="req">＊</span></label>
+      <select name="identity" id="identitySel" required>
+        <option value="">請選擇</option>
+        <option value="first">第一次參加（NT$1,500）</option>
+        <option value="returning">上過 AI 程式課程的舊夥伴（NT$300）</option>
+      </select>
+      <div style="font-size:13.5px;color:#5d7060;background:#eef2e6;border-radius:10px;padding:12px 14px;margin-top:8px;line-height:1.7">
+        <b style="color:var(--green)">💡 什麼是「舊夥伴」？</b><br>
+        曾參加過以下任一梯 AI 程式課程，即為舊夥伴，可享 NT$300 優惠：<br>
+        · 第一梯次｜2026/5/24（日）<br>
+        · 第二梯次｜2026/6/13（六）<br>
+        · 六月加開場｜2026/6/28（日）<br>
+        · 第三梯次｜2026/7/12（日）<br>
+        · Codex 實戰第一梯｜2026/8/9（日）<br>
+        · Codex 實戰第二梯｜2026/8/29（六）<br>
+        · Codex 實戰第三梯｜2026/9/26（六）<br>
+        · ChatGPT 實戰｜2026/10/31（六）
+      </div>
+
+      <div id="prevCourseBox" style="display:none">
+        <label>舊夥伴：你上過的是哪一梯？ <span class="req">＊</span></label>
+        <select name="prev_course" id="prevCourseInput">
+          <option value="">請選擇</option>
+          <option>第一梯次｜2026/5/24（日）</option>
+          <option>第二梯次｜2026/6/13（六）</option>
+          <option>六月加開場｜2026/6/28（日）</option>
+          <option>第三梯次｜2026/7/12（日）</option>
+          <option>Codex 實戰第一梯｜2026/8/9（日）</option>
+          <option>Codex 實戰第二梯｜2026/8/29（六）</option>
+          <option>Codex 實戰第三梯｜2026/9/26（六）</option>
+          <option>ChatGPT 實戰｜2026/10/31（六）</option>
+          <option>其他 / 記不清楚（請於下方留言註明）</option>
+        </select>
+      </div>
+
+      <label>你知道本課程需要 ChatGPT Plus（或以上）方案嗎？ <span class="req">＊</span></label>
+      <select name="gpt_plus_aware" required>
+        <option value="">請選擇</option>
+        <option>知道</option>
+      </select>
+
+      <label>您的銀行帳號末五碼（等等匯款用的那個帳戶） <span class="req">＊</span></label>
+      <input type="text" name="last5" required inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="例：12345" title="請輸入 5 位數字">
+      <p style="font-size:13.5px;color:#7a8a7d;margin-top:4px">用來核對入帳，請務必用這個帳戶轉帳。</p>
+
+      <label>最想用 AI 解決的一件事（選填）</label>
+      <textarea name="pain" rows="3" placeholder="例：段考前出三份不同版本的複習卷快把我逼瘋了"></textarea>
+
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off">
+
+      <button type="submit" id="submitBtn">送出報名 🚀</button>
+      <div id="formMsg" role="status" aria-live="polite"></div>
+      <p class="form-note">送出後：系統確認後台已收到資料，才會顯示匯款資訊與 LINE 群連結，並寄一封確認信到你的 Email。為判斷宣傳成效，頁面會一併記錄廣告來源代碼與到達時間，不會把點擊誤算成報名。</p>
+    </form>
+
+    <!-- 送出成功後顯示 -->
+    <div id="successBox" style="display:none">
+      <h3 id="successTitle" style="text-align:center;font-size:22px">🎉 報名已確認！</h3>
+      <p id="successIntro" style="text-align:center;margin-top:.4em">後台已收到你的報名資料，確認信將寄到你的 Email（沒收到請翻垃圾郵件）。<br>接下來兩步驟：</p>
+
+      <div id="paymentStep" style="background:#fffdf6;border:2px solid var(--gold);border-radius:12px;padding:18px 22px;margin-top:18px">
+        <p style="font-weight:900;font-size:17px">💳 第一步：完成匯款 <span id="payAmount" style="color:var(--red)"></span></p>
+        <p style="margin-top:.5em;line-height:2">
+          銀行：<b>玉山銀行（808）烏日分行</b><br>
+          戶名：<b>尤靜誼</b><br>
+          帳號：<b style="font-size:1.2em;letter-spacing:.06em">1399-979-101249</b>
+        </p>
+        <p style="margin-top:.5em;font-size:14.5px;color:#8a5a2a">⚠️ 請使用您剛才填寫「末五碼」的那個帳戶轉帳，以利核對。<br>完成轉帳後不需另外通知，核對到入帳會在 LINE 群組私訊您確認。</p>
+      </div>
+
+      <div id="waitlistStep" style="display:none;background:#fff8e7;border:2px solid #d89b2b;border-radius:12px;padding:18px 22px;margin-top:18px;text-align:center">
+        <p style="font-weight:900;font-size:17px;color:#8a5a2a">目前為候補，請先不要匯款</p>
+        <p style="margin-top:.5em;color:#5d4a2f">有名額釋出時，我們會另外通知你；收到通知後再完成匯款即可。</p>
+      </div>
+
+      <div style="background:#fffdf6;border:2px solid var(--green);border-radius:12px;padding:18px 22px;margin-top:14px;text-align:center">
+        <p style="font-weight:900;font-size:17px">💬 第二步：加入課程 LINE 群組</p>
+        <p style="font-size:14.5px;color:#4d5c50;margin-top:.3em">會議連結、課前指南、入帳確認都在群組公布。</p>
+        <a class="cta" style="margin-top:14px;font-size:17px;padding:.7em 2em" href="https://line.me/R/ti/g/wUKh92bwjx" target="_blank" rel="noopener">加入 LINE 群組 →</a>
+      </div>
+
+      <div style="margin-top:14px;font-size:14.5px;color:#4d5c50;background:#f4efe0;border-radius:12px;padding:14px 20px">
+        <p style="font-weight:900">📌 三個提醒</p>
+        <p>· 這堂課必須訂閱 ChatGPT Plus（或以上），課前請完成訂閱，並<a href="https://chatgpt.com/download/" target="_blank" rel="noopener">下載 ChatGPT 桌面版</a>，課堂使用其中的 Codex 程式模式（指南在群組）</p>
+        <p>· 請準備一份自己的題庫（至少 20 題，Word / PDF / 拍照都行）</p>
+        <p>· 當天不能上課請提早告知：開課兩天前（11/27 前）可退費，之後只能補課恕不退費</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  一百分遊戲教育 ｜ <a href="https://yoyo700702ai.github.io/100points-education-site/#courses" target="_blank" rel="noopener">更多課程與教師研習</a>
+</footer>
+
+<script>
+  // ══ 設定：貼上你的 Google Apps Script 網頁應用程式網址（部署步驟見 apps_script_setup.md）══
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBUdG3KN18FoZtVmWK8bVtqaYrJ16ThbmsWC05ZAEn10RV1SioXLkkyLZWHjVgJFM/exec";
+  const ATTRIBUTION_STORAGE_KEY = 'chatgpt_1128_attribution_v1';
+  const REQUEST_STORAGE_KEY = 'chatgpt_1128_pending_request_v1';
+  const ATTRIBUTION_EXPIRES_AT = Date.parse('2026-11-01T00:00:00+08:00');
+
+  function shortValue(value, maxLength) {
+    return String(value || '').trim().slice(0, maxLength);
+  }
+
+  function normaliseAttribution(record) {
+    if (!record || typeof record !== 'object') return null;
+    const expiresAt = Number(record.expires_at || 0);
+    if (!Number.isFinite(expiresAt) || Date.now() >= expiresAt) return null;
+    return {
+      utm_source: shortValue(record.utm_source, 80),
+      utm_medium: shortValue(record.utm_medium, 80),
+      utm_campaign: shortValue(record.utm_campaign, 120),
+      utm_content: shortValue(record.utm_content, 120),
+      meta_ad_id: shortValue(record.meta_ad_id, 80),
+      meta_adset_id: shortValue(record.meta_adset_id, 80),
+      meta_campaign_id: shortValue(record.meta_campaign_id, 80),
+      meta_placement: shortValue(record.meta_placement, 80),
+      fbclid: shortValue(record.fbclid, 180),
+      attribution_touch_at: shortValue(record.attribution_touch_at, 40),
+      expires_at: expiresAt
+    };
+  }
+
+  // 保存最近一次可辨識的宣傳來源；直接開啟或重新整理不會蓋掉先前的廣告來源。
+  function captureAttribution() {
+    const params = new URLSearchParams(window.location.search);
+    const fields = {
+      utm_source: shortValue(params.get('utm_source'), 80),
+      utm_medium: shortValue(params.get('utm_medium'), 80),
+      utm_campaign: shortValue(params.get('utm_campaign'), 120),
+      utm_content: shortValue(params.get('utm_content'), 120),
+      meta_ad_id: shortValue(params.get('meta_ad_id') || params.get('ad_id'), 80),
+      meta_adset_id: shortValue(params.get('meta_adset_id') || params.get('adset_id'), 80),
+      meta_campaign_id: shortValue(params.get('meta_campaign_id') || params.get('campaign_id'), 80),
+      meta_placement: shortValue(params.get('meta_placement') || params.get('placement'), 80),
+      fbclid: shortValue(params.get('fbclid'), 180),
+      attribution_touch_at: new Date().toISOString()
+    };
+    const hasIdentifiableSource = Object.entries(fields)
+      .some(([key, value]) => key !== 'attribution_touch_at' && Boolean(value));
+
+    let saved = null;
+    try {
+      saved = normaliseAttribution(JSON.parse(localStorage.getItem(ATTRIBUTION_STORAGE_KEY) || 'null'));
+      if (!saved) {
+        localStorage.removeItem(ATTRIBUTION_STORAGE_KEY);
+      }
+    } catch (_) {
+      saved = null;
+    }
+
+    if (hasIdentifiableSource) {
+      if (!fields.utm_source && fields.fbclid) fields.utm_source = 'meta';
+      if (!fields.utm_medium && fields.fbclid) fields.utm_medium = 'paid_social';
+      const record = { ...fields, expires_at: ATTRIBUTION_EXPIRES_AT };
+      try { localStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(record)); } catch (_) {}
+      return record;
+    }
+
+    if (saved) return saved;
+    const direct = {
+      ...fields,
+      utm_source: 'direct',
+      utm_medium: 'none',
+      expires_at: ATTRIBUTION_EXPIRES_AT
+    };
+    try { localStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(direct)); } catch (_) {}
+    return direct;
+  }
+
+  function createRequestId() {
+    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+      return window.crypto.randomUUID();
+    }
+    if (window.crypto && typeof window.crypto.getRandomValues === 'function') {
+      const bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 15) | 64;
+      bytes[8] = (bytes[8] & 63) | 128;
+      const hex = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+      return hex.slice(0, 8) + '-' + hex.slice(8, 12) + '-' + hex.slice(12, 16)
+        + '-' + hex.slice(16, 20) + '-' + hex.slice(20);
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, char => {
+      const random = Math.floor(Math.random() * 16);
+      const value = char === 'x' ? random : ((random & 3) | 8);
+      return value.toString(16);
+    });
+  }
+
+  function pendingRequestId() {
+    let requestId = '';
+    try { requestId = sessionStorage.getItem(REQUEST_STORAGE_KEY) || ''; } catch (_) {}
+    if (/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestId)) {
+      return requestId;
+    }
+    requestId = createRequestId();
+    try { sessionStorage.setItem(REQUEST_STORAGE_KEY, requestId); } catch (_) {}
+    return requestId;
+  }
+
+  const attribution = captureAttribution();
+
+  function checkReceipt(requestId) {
+    return new Promise((resolve, reject) => {
+      const callbackName = '__signupReceipt_' + requestId.replace(/-/g, '') + '_' + Date.now();
+      const script = document.createElement('script');
+      let finished = false;
+      const finish = (fn, value) => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        delete window[callbackName];
+        script.remove();
+        fn(value);
+      };
+      const timer = setTimeout(() => finish(reject, new Error('receipt timeout')), 4500);
+      window[callbackName] = payload => finish(resolve, payload || {});
+      script.onerror = () => finish(reject, new Error('receipt unavailable'));
+      script.src = APPS_SCRIPT_URL + '?action=receipt&request_id=' + encodeURIComponent(requestId)
+        + '&callback=' + encodeURIComponent(callbackName) + '&_=' + Date.now();
+      document.head.appendChild(script);
+    });
+  }
+
+  async function waitForReceipt(requestId) {
+    const delays = [0, 900, 1800, 3000];
+    for (const delay of delays) {
+      if (delay) await new Promise(resolve => setTimeout(resolve, delay));
+      try {
+        const receipt = await checkReceipt(requestId);
+        if (receipt && receipt.ready === true) return receipt;
+      } catch (_) {}
+    }
+    return null;
+  }
+
+  // ══ 內嵌試玩：點封面 → 原地載入遊戲 iframe（同小禮包版型）══
+  document.querySelectorAll('.demo-stage').forEach(stage => {
+    const overlay = stage.querySelector('.play-overlay');
+    const fsBtn = stage.querySelector('.play-fullscreen');
+    overlay.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = stage.dataset.src;
+      iframe.setAttribute('allow', 'fullscreen; autoplay');
+      iframe.setAttribute('allowfullscreen', 'true');
+      stage.appendChild(iframe);
+      overlay.remove();
+      const img = stage.querySelector('img.cover-img');
+      if (img) img.remove();
+      stage.classList.add('playing');
+    });
+    fsBtn.addEventListener('click', () => {
+      const iframe = stage.querySelector('iframe');
+      if (!iframe) return;
+      if (iframe.requestFullscreen) iframe.requestFullscreen();
+      else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+    });
+  });
+
+  const form = document.getElementById('regForm');
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('formMsg');
+
+  // 舊生才顯示（且必填）「上過哪一堂課」
+  const identitySel = document.getElementById('identitySel');
+  const prevBox = document.getElementById('prevCourseBox');
+  const prevInput = document.getElementById('prevCourseInput');
+  identitySel.addEventListener('change', () => {
+    const isReturning = identitySel.value === 'returning';
+    prevBox.style.display = isReturning ? 'block' : 'none';
+    prevInput.required = isReturning;
+    if (!isReturning) prevInput.value = '';
+  });
+
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (form.company.value) return;               // honeypot：機器人填了就默默擋掉
+    if (!APPS_SCRIPT_URL) {
+      msg.className = 'err';
+      msg.textContent = '表單尚未串接後台（管理員：請依 apps_script_setup.md 設定 APPS_SCRIPT_URL）';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = '送出中…';
+    try {
+      const data = new FormData(form);
+      const requestId = pendingRequestId();
+      data.set('request_id', requestId);
+      [
+        'utm_source', 'utm_medium', 'utm_campaign', 'utm_content',
+        'meta_ad_id', 'meta_adset_id', 'meta_campaign_id', 'meta_placement',
+        'fbclid', 'attribution_touch_at'
+      ].forEach(key => data.set(key, attribution[key] || ''));
+      let postError = null;
+      try {
+        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
+      } catch (err) {
+        // 即使瀏覽器回報網路錯誤，請求仍可能已抵達 Apps Script；一律以 receipt 為準。
+        postError = err;
+      }
+      btn.textContent = '確認後台中…';
+      const receipt = await waitForReceipt(requestId);
+      if (!receipt) {
+        msg.className = 'err';
+        msg.textContent = postError
+          ? '目前無法確認資料是否送達。請先不要匯款；按下方按鈕可用同一筆編號再次送出與確認，不會重複報名。'
+          : '資料已送出，但後台尚未確認寫入。請先不要匯款；按下方按鈕可用同一筆編號再次確認，不會重複報名。';
+        btn.disabled = false;
+        btn.textContent = '再次確認報名狀態';
+        return;
+      }
+
+      // 只有查到後台實際紀錄，才切換到成功畫面。
+      const isWaitlisted = receipt.status === '候補';
+      document.getElementById('successTitle').textContent = isWaitlisted
+        ? '報名資料已收到，目前為候補'
+        : '🎉 報名已確認！';
+      document.getElementById('successIntro').innerHTML = isWaitlisted
+        ? '後台已收到你的候補登記，確認信將寄到你的 Email。<br>請先不要匯款；有名額釋出時我們會再通知你。'
+        : '後台已收到你的報名資料，確認信將寄到你的 Email（沒收到請翻垃圾郵件）。<br>接下來兩步驟：';
+      document.getElementById('paymentStep').style.display = isWaitlisted ? 'none' : 'block';
+      document.getElementById('waitlistStep').style.display = isWaitlisted ? 'block' : 'none';
+      document.getElementById('payAmount').textContent =
+        identitySel.value === 'returning' ? 'NT$300' : 'NT$1,500';
+      try { sessionStorage.removeItem(REQUEST_STORAGE_KEY); } catch (_) {}
+      form.style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+      document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (err) {
+      msg.className = 'err';
+      msg.textContent = '送出失敗，請稍後再試，或直接聯絡主辦方 LINE。';
+      btn.disabled = false;
+      btn.textContent = '送出報名 🚀';
+    }
+  });
+</script>
+</body>
+</html>
