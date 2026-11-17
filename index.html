@@ -155,6 +155,10 @@
   #formMsg{margin-top:16px;text-align:center;font-weight:900;display:none;padding:.8em;border-radius:10px}
   #formMsg.ok{display:block;background:#e2efdd;color:#3f6e52}
   #formMsg.err{display:block;background:#f6ded6;color:var(--red)}
+  .registration-pending{background:#fff5d8;border:2px solid var(--gold);border-radius:14px;padding:22px;text-align:center;color:#644b20}
+  .registration-pending p{margin-top:.7em}
+  .form-box button.quiet{background:transparent;border:1px solid #b5a781;box-shadow:none;font-size:15px;letter-spacing:.03em;margin-top:14px}
+  .registration-pending a{color:var(--green);font-weight:900}
   .hp{position:absolute;left:-9999px;opacity:0}
 
   /* 內嵌試玩舞台（同小禮包版型） */
@@ -514,11 +518,22 @@
 
       <button type="submit" id="submitBtn">送出報名 🚀</button>
       <div id="formMsg" role="status" aria-live="polite"></div>
-      <p class="form-note">送出後：系統確認後台已收到資料，才會顯示匯款資訊與 LINE 群連結，並寄一封確認信到你的 Email。為判斷宣傳成效，頁面會一併記錄廣告來源代碼與到達時間，不會把點擊誤算成報名。</p>
+      <p class="form-note">送出後會顯示報名結果、匯款資訊與 LINE 群連結，確認信也會寄到你的 Email。若確認較慢，可在原頁重新查詢，不必重填。為判斷宣傳成效，頁面會記錄廣告來源代碼與到達時間。</p>
     </form>
 
+    <div id="pendingBox" class="registration-pending" style="display:none">
+      <div role="status" aria-live="polite" aria-atomic="true">
+        <h3 id="pendingTitle">正在確認你的報名</h3>
+        <p id="pendingMessage"></p>
+      </div>
+      <button type="button" id="checkStatusBtn">查詢報名結果</button>
+      <button type="button" id="resendBtn" class="quiet" style="display:none">用原資料再次送出</button>
+      <p>已收到「報名成功」確認信的學員，可依信件完成匯款。<br>若仍未收到結果，請<a href="https://line.me/R/ti/g/wUKh92bwjx" target="_blank" rel="noopener">加入課程 LINE 群組，請主辦協助確認</a>。</p>
+      <button type="button" id="pendingNewBtn" class="quiet">替另一位學員報名</button>
+    </div>
+
     <!-- 送出成功後顯示 -->
-    <div id="successBox" style="display:none">
+    <div id="successBox" style="display:none" role="region" aria-labelledby="successTitle">
       <h3 id="successTitle" style="text-align:center;font-size:22px">🎉 報名已確認！</h3>
       <p id="successIntro" style="text-align:center;margin-top:.4em">後台已收到你的報名資料，確認信將寄到你的 Email（沒收到請翻垃圾郵件）。<br>接下來兩步驟：</p>
 
@@ -529,7 +544,7 @@
           戶名：<b>尤靜誼</b><br>
           帳號：<b style="font-size:1.2em;letter-spacing:.06em">1399-979-101249</b>
         </p>
-        <p style="margin-top:.5em;font-size:14.5px;color:#8a5a2a">⚠️ 請使用您剛才填寫「末五碼」的那個帳戶轉帳，以利核對。<br>完成轉帳後不需另外通知，核對到入帳會在 LINE 群組私訊您確認。</p>
+        <p style="margin-top:.5em;font-size:14.5px;color:#8a5a2a">⚠️ 請使用您報名時填寫「末五碼」的那個帳戶轉帳，以利核對。<br>完成轉帳後不需另外通知，核對到入帳會在 LINE 群組私訊您確認。</p>
       </div>
 
       <div id="waitlistStep" style="display:none;background:#fff8e7;border:2px solid #d89b2b;border-radius:12px;padding:18px 22px;margin-top:18px;text-align:center">
@@ -549,6 +564,8 @@
         <p>· 請準備一份自己的題庫（至少 20 題，Word / PDF / 拍照都行）</p>
         <p>· 當天不能上課請提早告知：開課兩天前（11/27 前）可退費，之後只能補課恕不退費</p>
       </div>
+      <p class="form-note">已匯款的學員不用重複付款。使用同一個瀏覽器重新開啟本頁，可再查看報名結果。</p>
+      <button type="button" id="newRegistrationBtn" class="quiet">替另一位學員報名</button>
     </div>
   </div>
 </section>
@@ -654,48 +671,95 @@
     });
   }
 
-  function pendingRequestId() {
-    let requestId = '';
-    try { requestId = sessionStorage.getItem(REQUEST_STORAGE_KEY) || ''; } catch (_) {}
-    if (/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(requestId)) {
-      return requestId;
+  function validRequestId(value) {
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value || '');
+  }
+
+  function restoreRequestId() {
+    const linked = new URLSearchParams((window.location.hash || '').slice(1)).get('receipt');
+    if (validRequestId(linked)) return linked.toLowerCase();
+    // 延續舊版尚未完成的請求；跨分頁則使用同一瀏覽器保存的編號。
+    for (const storageName of ['sessionStorage', 'localStorage']) {
+      try {
+        const id = window[storageName].getItem(REQUEST_STORAGE_KEY);
+        if (validRequestId(id)) return id.toLowerCase();
+      } catch (_) {}
     }
-    requestId = createRequestId();
-    try { sessionStorage.setItem(REQUEST_STORAGE_KEY, requestId); } catch (_) {}
+    return '';
+  }
+
+  let activeRequestId = restoreRequestId();
+
+  function rememberRequestId(requestId) {
+    activeRequestId = requestId;
+    // 只保存隨機編號，不在瀏覽器保存姓名、Email 或匯款資料。
+    for (const storageName of ['sessionStorage', 'localStorage']) {
+      try { window[storageName].setItem(REQUEST_STORAGE_KEY, requestId); } catch (_) {}
+    }
+    try { window.history.replaceState(null, '', '#receipt=' + requestId); } catch (_) {}
+  }
+
+  function pendingRequestId() {
+    // 即使瀏覽器禁止儲存，這個分頁仍沿用同一個編號。
+    const requestId = activeRequestId || createRequestId();
+    rememberRequestId(requestId);
     return requestId;
   }
 
   const attribution = captureAttribution();
 
+  let receiptSequence = 0;
   function checkReceipt(requestId) {
     return new Promise((resolve, reject) => {
-      const callbackName = '__signupReceipt_' + requestId.replace(/-/g, '') + '_' + Date.now();
+      const callbackName = '__signupReceipt_' + requestId.replace(/-/g, '') + '_' + (++receiptSequence);
       const script = document.createElement('script');
+      const controller = new AbortController();
       let finished = false;
+      let scriptStarted = false;
       const finish = (fn, value) => {
         if (finished) return;
         finished = true;
         clearTimeout(timer);
+        clearTimeout(fallbackTimer);
+        controller.abort();
         delete window[callbackName];
         script.remove();
         fn(value);
       };
-      const timer = setTimeout(() => finish(reject, new Error('receipt timeout')), 4500);
-      window[callbackName] = payload => finish(resolve, payload || {});
-      script.onerror = () => finish(reject, new Error('receipt unavailable'));
-      script.src = APPS_SCRIPT_URL + '?action=receipt&request_id=' + encodeURIComponent(requestId)
-        + '&callback=' + encodeURIComponent(callbackName) + '&_=' + Date.now();
-      document.head.appendChild(script);
+      const accept = payload => {
+        if (payload && typeof payload.ready === 'boolean') finish(resolve, payload);
+      };
+      const url = APPS_SCRIPT_URL + '?action=receipt&request_id=' + encodeURIComponent(requestId)
+        + '&_=' + Date.now();
+      const startJsonp = () => {
+        if (finished || scriptStarted) return;
+        scriptStarted = true;
+        window[callbackName] = accept;
+        // 其中一路失敗時，仍保留另一條查詢管道直到本輪截止。
+        script.onerror = () => {};
+        script.src = url + '&callback=' + encodeURIComponent(callbackName);
+        document.head.appendChild(script);
+      };
+      const timer = setTimeout(() => finish(reject, new Error('receipt timeout')), 12000);
+      const fallbackTimer = setTimeout(startJsonp, 1500);
+      fetch(url, { signal: controller.signal, cache: 'no-store' })
+        .then(response => {
+          if (!response.ok) throw new Error('receipt unavailable');
+          return response.json();
+        })
+        .then(payload => { accept(payload); if (!finished) startJsonp(); })
+        .catch(startJsonp);
     });
   }
 
   async function waitForReceipt(requestId) {
-    const delays = [0, 900, 1800, 3000];
+    const delays = [0, 1500, 3000];
     for (const delay of delays) {
       if (delay) await new Promise(resolve => setTimeout(resolve, delay));
       try {
         const receipt = await checkReceipt(requestId);
-        if (receipt && receipt.ready === true) return receipt;
+        if (receipt && receipt.ready === true
+            && ['正取', '候補', '舊生／複訓'].includes(receipt.status)) return receipt;
       } catch (_) {}
     }
     return null;
@@ -740,67 +804,138 @@
   });
 
 
+  const pendingBox = document.getElementById('pendingBox');
+  const checkStatusBtn = document.getElementById('checkStatusBtn');
+  const resendBtn = document.getElementById('resendBtn');
+  const pendingNewBtn = document.getElementById('pendingNewBtn');
+  const newRegistrationBtn = document.getElementById('newRegistrationBtn');
+  let busy = false;
+  let lastSubmissionData = null;
+
+  function setBusy(value) {
+    busy = value;
+    [btn, checkStatusBtn, resendBtn, pendingNewBtn, newRegistrationBtn]
+      .forEach(button => { button.disabled = value; });
+    checkStatusBtn.textContent = value ? '正在確認，請稍候…' : '查詢報名結果';
+  }
+
+  function showPending(title, message) {
+    form.style.display = 'none';
+    document.getElementById('successBox').style.display = 'none';
+    pendingBox.style.display = 'block';
+    document.getElementById('pendingTitle').textContent = title;
+    document.getElementById('pendingMessage').textContent = message;
+    pendingBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function renderReceipt(receipt) {
+    if (!receipt || receipt.ready !== true
+        || !['正取', '候補', '舊生／複訓'].includes(receipt.status)) return false;
+    const isWaitlisted = receipt.status === '候補';
+    document.getElementById('successTitle').textContent = isWaitlisted
+      ? '報名資料已收到，目前為候補'
+      : '🎉 報名成功！' + (receipt.status === '正取' ? '你是正取' : '舊夥伴／複訓');
+    document.getElementById('successIntro').innerHTML = isWaitlisted
+      ? '你的候補登記已收到。<br>有名額釋出時，我們會通知你完成匯款。'
+      : '你的報名資料已收到，不必再次填寫。<br>2026/11/29（日）19:00–22:00 線上見！請完成以下兩步：';
+    document.getElementById('paymentStep').style.display = isWaitlisted ? 'none' : 'block';
+    document.getElementById('waitlistStep').style.display = isWaitlisted ? 'block' : 'none';
+    // 重新開啟結果時沒有表單輸入，金額一律依後台身分判斷。
+    document.getElementById('payAmount').textContent =
+      receipt.status === '舊生／複訓' ? 'NT$300' : (isWaitlisted ? '' : 'NT$1,500');
+    rememberRequestId(activeRequestId);
+    form.style.display = 'none';
+    pendingBox.style.display = 'none';
+    document.getElementById('successBox').style.display = 'block';
+    document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return true;
+  }
+
+  async function confirmRegistration() {
+    if (busy || !validRequestId(activeRequestId)) return;
+    setBusy(true);
+    rememberRequestId(activeRequestId);
+    resendBtn.style.display = 'none';
+    showPending('正在確認你的報名', '正在查詢報名結果，請稍候。確認完成後，這裡會直接顯示匯款與入群資訊。');
+    try {
+      const receipt = await waitForReceipt(activeRequestId);
+      if (renderReceipt(receipt)) return;
+      showPending('報名確認較慢，請在這裡查詢',
+        '目前還沒取得報名結果，這不代表報名失敗。你可以按「查詢報名結果」，不會重新送出報名資料。');
+      // 只有本分頁確實送出過的原始資料才能重送；恢復結果頁不會送出空白表單。
+      resendBtn.style.display = lastSubmissionData ? 'block' : 'none';
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function sendRegistration() {
+    if (busy || !lastSubmissionData) return;
+    setBusy(true);
+    resendBtn.style.display = 'none';
+    showPending('正在送出報名', '請稍候，你的資料仍保留在這個分頁。');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors', body: lastSubmissionData, signal: controller.signal
+      });
+    } catch (_) {
+      // 連線中斷時後台仍可能已收到資料，接著只查詢同一個編號。
+    } finally {
+      clearTimeout(timeout);
+      controller.abort();
+      setBusy(false);
+    }
+    await confirmRegistration();
+  }
+
+  function startNewRegistration() {
+    if (busy) return;
+    activeRequestId = '';
+    lastSubmissionData = null;
+    for (const storageName of ['sessionStorage', 'localStorage']) {
+      try { window[storageName].removeItem(REQUEST_STORAGE_KEY); } catch (_) {}
+    }
+    try { window.history.replaceState(null, '', '#signup'); } catch (_) {}
+    form.reset();
+    prevBox.style.display = 'none';
+    prevInput.required = false;
+    msg.className = '';
+    msg.textContent = '';
+    btn.textContent = '送出報名 🚀';
+    pendingBox.style.display = 'none';
+    document.getElementById('successBox').style.display = 'none';
+    form.style.display = 'block';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  checkStatusBtn.addEventListener('click', confirmRegistration);
+  resendBtn.addEventListener('click', sendRegistration);
+  pendingNewBtn.addEventListener('click', startNewRegistration);
+  newRegistrationBtn.addEventListener('click', startNewRegistration);
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form.company.value) return;               // honeypot：機器人填了就默默擋掉
+    if (busy || form.company.value) return;
+    if (activeRequestId) return confirmRegistration();
     if (!APPS_SCRIPT_URL) {
       msg.className = 'err';
-      msg.textContent = '表單尚未串接後台（管理員：請依 apps_script_setup.md 設定 APPS_SCRIPT_URL）';
+      msg.textContent = '報名服務正在準備中，請聯絡主辦方協助報名。';
       return;
     }
-    btn.disabled = true;
-    btn.textContent = '送出中…';
-    try {
-      const data = new FormData(form);
-      const requestId = pendingRequestId();
-      data.set('request_id', requestId);
-      [
-        'utm_source', 'utm_medium', 'utm_campaign', 'utm_content',
-        'meta_ad_id', 'meta_adset_id', 'meta_campaign_id', 'meta_placement',
-        'fbclid', 'attribution_touch_at'
-      ].forEach(key => data.set(key, attribution[key] || ''));
-      let postError = null;
-      try {
-        await fetch(APPS_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data });
-      } catch (err) {
-        // 即使瀏覽器回報網路錯誤，請求仍可能已抵達 Apps Script；一律以 receipt 為準。
-        postError = err;
-      }
-      btn.textContent = '確認後台中…';
-      const receipt = await waitForReceipt(requestId);
-      if (!receipt) {
-        msg.className = 'err';
-        msg.textContent = postError
-          ? '目前無法確認資料是否送達。請先不要匯款；按下方按鈕可用同一筆編號再次送出與確認，不會重複報名。'
-          : '資料已送出，但後台尚未確認寫入。請先不要匯款；按下方按鈕可用同一筆編號再次確認，不會重複報名。';
-        btn.disabled = false;
-        btn.textContent = '再次確認報名狀態';
-        return;
-      }
-
-      // 只有查到後台實際紀錄，才切換到成功畫面。
-      const isWaitlisted = receipt.status === '候補';
-      document.getElementById('successTitle').textContent = isWaitlisted
-        ? '報名資料已收到，目前為候補'
-        : '🎉 報名已確認！';
-      document.getElementById('successIntro').innerHTML = isWaitlisted
-        ? '後台已收到你的候補登記，確認信將寄到你的 Email。<br>請先不要匯款；有名額釋出時我們會再通知你。'
-        : '後台已收到你的報名資料，確認信將寄到你的 Email（沒收到請翻垃圾郵件）。<br>接下來兩步驟：';
-      document.getElementById('paymentStep').style.display = isWaitlisted ? 'none' : 'block';
-      document.getElementById('waitlistStep').style.display = isWaitlisted ? 'block' : 'none';
-      document.getElementById('payAmount').textContent =
-        identitySel.value === 'returning' ? 'NT$300' : 'NT$1,500';
-      try { sessionStorage.removeItem(REQUEST_STORAGE_KEY); } catch (_) {}
-      form.style.display = 'none';
-      document.getElementById('successBox').style.display = 'block';
-      document.getElementById('successBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (err) {
-      msg.className = 'err';
-      msg.textContent = '送出失敗，請稍後再試，或直接聯絡主辦方 LINE。';
-      btn.disabled = false;
-      btn.textContent = '送出報名 🚀';
-    }
+    lastSubmissionData = new FormData(form);
+    lastSubmissionData.set('request_id', pendingRequestId());
+    [
+      'utm_source', 'utm_medium', 'utm_campaign', 'utm_content',
+      'meta_ad_id', 'meta_adset_id', 'meta_campaign_id', 'meta_placement',
+      'fbclid', 'attribution_touch_at'
+    ].forEach(key => lastSubmissionData.set(key, attribution[key] || ''));
+    await sendRegistration();
   });
+
+  // 舊頁面未確認的請求、同瀏覽器重訪、專屬結果連結，都只查詢，不重新報名。
+  if (activeRequestId) confirmRegistration();
 </script>
 </body>
 </html>
