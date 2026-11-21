@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f0e6">
+  <title>勇者試煉｜五年級國語魔法冒險</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="questions.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="勇者試煉首頁"><span class="brand-star" aria-hidden="true">✦</span><span>勇者試煉<small>國語魔法冒險</small></span></a>
+      <div class="top-tools"><span class="grade-tag">五年級 · 國語</span><button class="icon-button" id="sound-toggle" aria-label="開啟音效" aria-pressed="false">音效 關</button><button class="icon-button" id="help-toggle" aria-expanded="false">玩法</button></div>
+    </header>
+    <main id="app"></main>
+    <footer class="footer"><span>每一次認真思考，都會長出新的魔法。</span><span>黏土冒險系列 · VOL. 01</span></footer>
+  </div>
+  <dialog id="help-dialog"><button class="close-button" id="close-help" aria-label="關閉玩法">×</button><p class="eyebrow">ADVENTURER'S GUIDE</p><h2>魔法，藏在你的答案裡。</h2><ol class="guide"><li>你是擁有 <b>100 HP</b> 的魔法師，依序挑戰五隻怪物。每關必須完成 5 題，全程 25 題。</li><li>答對施放魔法並賺取 <b>15 金幣</b>；答錯扣血，並立即顯示正解。</li><li>每關完成 5 題後，擊退怪物且 HP 大於 0 即可過關。提早擊退怪物後，仍須完成該關剩餘題目。</li><li>每次過關另得 <b>20 金幣</b>。在商店購買回血藥水、攻擊水晶或復活符。</li><li>藥水立即回復 40 HP；水晶永久增加 10 攻擊，最多購買 3 次；復活符在 HP 歸零時自動消耗，回復 50 HP。</li><li>每題可按鍵盤 <b>1–4</b> 作答，答題後按 Enter 繼續。手機可直接點選。</li></ol><p class="guide-note">途中關閉頁面會結束本次冒險。失敗後可重新挑戰，題目與選項順序會重新打亂。</p></dialog>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+</body>
+</html>
